@@ -1,65 +1,67 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>markItUp! Universal markup editor</title>
-	<link rel="stylesheet" type="text/css" href="images/style.css">
-	<!-- markItUp! skin -->
-	<link rel="stylesheet" type="text/css" href="markitup/skins/markitup/style.css">
-	<!--  markItUp! toolbar skin -->
-	<link rel="stylesheet" type="text/css" href="markitup/sets/default/style.css">
-	<!-- jQuery -->
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
-	<!-- markItUp! -->
-	<script type="text/javascript" src="markitup/jquery.markitup.js"></script>
-	<!-- markItUp! toolbar settings -->
-	<script type="text/javascript" src="markitup/sets/default/set.js"></script>
-</head>
-<body>
-<h1><a href="http://markitup.jaysalvat.com/">markItUp!</a></h1>
-<p><em><a href="http://www.jaysalvat.com">By Jay Salvat</a></em></p>
-<p>Downloads, examples and documentation at <a href="http://markitup.jaysalvat.com">http://markitup.jaysalvat.com</a>.</p>
-<p>Click <a href="#" class="add">this link to insert content</a> from anywhere in the page or <a href="#" class="toggle">this one to <span>remove markItUp!</span></a></p>
-<textarea id="markItUp" cols="80" rows="20">
-&lt;h1&gt;Welcome on markItUp!&lt;/h1&gt;
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
 
-&lt;p&gt;&lt;strong&gt;markItUp!&lt;/strong&gt; is a JavaScript plugin built on the jQuery library. It allows you to turn any textarea into a markup editor. Html, Textile, Wiki Syntax, Markdown, BBcode or even your own markup system can be easily implemented.&lt;/p&gt;
+        <link rel="stylesheet" href="css/normalize.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="markitup/skins/simple/style.css" />
+        <link rel="stylesheet" type="text/css" href="markitup/sets/schema/style.css" />
+
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <h1>Semantic Markup</h1>
+        <p>Girl Scout cookbook, May 2, 1948</p>
+        <p>Page 25</p>
+        <p><a href="http://diyhistory.lib.uiowa.edu/transcribe/scripto/transcribe/124/8015">transciption page</a></p>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+        <script type="text/javascript" src="markitup/jquery.markitup.js"></script>
+        <script type="text/javascript" src="markitup/sets/schema/recipe.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.js"><\/script>')</script>
+
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+
+        <script>
+            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
+
+        <script type="text/javascript" >
+           $(document).ready(function() {
+              $("#recipe-area").markItUp(mySettings);
+           });
+        </script>
+
+
+
+<textarea id="recipe-area">
+Devils Food Cake
+
+1/2 cup sugar 3 squares chocolate 1/2 cup milk. Mix and cook in double boiler until choc. is thoroughly blended. Cool 1/2 cup shortening 1 tsp vanilla 1 1/2 cups sugar 1/2 tsp. soda 3 eggs 1 tsp baking powder 3/4 cup sour milk 2 1/2 cups flour
+
+Seperate eggs and beat whites stiff in small bowl on high speed. Cream butter and sugar in large bowl on No.1 speed and add yolks. Beat thoroughly. Sift dry ingredients together. Add alternatly with milk. Add chocolate mixture, last the egg whites. Bake in three 8 inch pans lined with wax paper for 25 minutes Oven heat 360F. Mrs. Maxine Kompier
+
 </textarea>
-<p>Support the project : <a href="http://markitup.jaysalvat.com/">Donate</a> | <a href="http://markitup.jaysalvat.com/">Contact</a></p>
-
-<script type="text/javascript">
-$(function() {
-	// Add markItUp! to your textarea in one line
-	// $('textarea').markItUp( { Settings }, { OptionalExtraSettings } );
-	$('#markItUp').markItUp(mySettings);
 
 
 
-	// You can add content from anywhere in your page
-	// $.markItUp( { Settings } );	
-	$('.add').click(function() {
- 		$('#markItUp').markItUp('insert',
-			{ 	openWith:'<opening tag>',
-				closeWith:'<\/closing tag>',
-				placeHolder:"New content"
-			}
-		);
- 		return false;
-	});
-	
-	// And you can add/remove markItUp! whenever you want
-	// $(textarea).markItUpRemove();
-	$('.toggle').click(function() {
-		if ($("#markItUp.markItUpEditor").length === 1) {
- 			$("#markItUp").markItUp('remove');
-			$("span", this).text("get markItUp! back");
-		} else {
-			$('#markItUp').markItUp(mySettings);
-			$("span", this).text("remove markItUp!");
-		}
- 		return false;
-	});
-});
-</script>
-</body>
+
+
+    </body>
 </html>
